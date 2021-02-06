@@ -450,7 +450,7 @@ def export_tiffs(rasters_path_out, nc_path, name_format,
 
     # Loop through netcdf file
     for yyyymmdd in time_var:
-        print '\t{0}'.format(yyyymmdd)
+        print('\t{0}'.format(yyyymmdd))
         output_name = rasters_path_out + os.sep + name_format.format(yyyymmdd)
         NetCDF_to_Raster(input_nc=nc_path, output_tiff=output_name,
                          ras_variable=variable_selected,
