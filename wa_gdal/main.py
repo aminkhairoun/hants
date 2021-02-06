@@ -73,7 +73,7 @@ def create_netcdf(rasters_path, name_format, start_date, end_date,
     empty_vec[:] = fill_val
 
     # Create netcdf file
-    print 'Creating netCDF file...'
+    print('Creating netCDF file...')
     nc_file = netCDF4.Dataset(nc_path, 'w', format="NETCDF4")
 
     # Create Dimensions
@@ -124,7 +124,7 @@ def create_netcdf(rasters_path, name_format, start_date, end_date,
                                           fill_value=fill_val)
     combined_var.long_name = 'combined values'
 
-    print '\tVariables created'
+    print('\tVariables created')
 
     # Load data
     lat_var[:] = lat_ls
@@ -137,7 +137,7 @@ def create_netcdf(rasters_path, name_format, start_date, end_date,
     bbox = [lonlim[0], latlim[0], lonlim[1], latlim[1]]
 
     # Raster loop
-    print '\tExtracting data from rasters...'
+    print('\tExtracting data from rasters...')
     for tt in range(len(dates_ls)):
 
         # Raster
@@ -163,7 +163,7 @@ def create_netcdf(rasters_path, name_format, start_date, end_date,
 
     # Close file
     nc_file.close()
-    print 'NetCDF file created'
+    print('NetCDF file created')
 
     # Return
     return nc_path
@@ -199,12 +199,12 @@ def HANTS_netcdf(nc_path, nb, nf, HiLo, low, high, fet, dod, delta,
 
     # Loop
     counter = 1
-    print 'Running HANTS...'
+    print('Running HANTS...')
     for m in range(rows):
         for n in range(cols):
-            print '\t{0}/{1}\tlat: {2}\tlon: {3}'.format(counter, size_st,
+            print('\t{0}/{1}\tlat: {2}\tlon: {3}'.format(counter, size_st,
                                                          lat_values[m],
-                                                         lon_values[n])
+                                                         lon_values[n]))
 
             y = pd.np.array(original_values[m, n, :])
 
@@ -432,7 +432,7 @@ def export_tiffs(rasters_path_out, nc_path, name_format,
     obtained by the HANTS algorithm disregarding of the original values.
     '''
     # Print
-    print 'Exporting...'
+    print('Exporting...')
 
     # Create folders
     if not os.path.exists(rasters_path_out):
@@ -458,7 +458,7 @@ def export_tiffs(rasters_path_out, nc_path, name_format,
                          crs={'variable': 'crs', 'wkt': 'crs_wkt'},
                          time={'variable': 'time', 'value': yyyymmdd})
     # Return
-    print 'Done'
+    print('Done')
     return rasters_path_out
 
 
